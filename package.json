@@ -1,0 +1,20 @@
+{
+  "name": "15",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node ./index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/parser": "^7.15.6",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/traverse": "^7.15.4"
+  },
+  "dependencies": {
+    "tapable": "^2.2.1"
+  }
+}

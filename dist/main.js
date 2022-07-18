@@ -1,0 +1,13 @@
+(function (modules) {
+        function require(module) {
+            function pathRequire(path) {
+                return require(modules[module].dependency[path]);
+            }
+            const exports={};
+            (function(require,exports,code){
+                eval(code);
+            })(pathRequire,exports,modules[module].code)
+            return exports;
+        }
+        require('./src/main.js');
+})({"./src/main.js":{"dependency":{"./heading.js":"./src/heading.js","./footer.js":"./src/footer.js","./user.json":"./src/user.json"},"code":"\"use strict\";\n\nvar _heading = _interopRequireDefault(require(\"./heading.js\"));\n\nrequire(\"./footer.js\");\n\nrequire(\"./user.json\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar heading = (0, _heading[\"default\"])();\ndocument.body.append(heading);\nconsole.log(user);"},"./src/heading.js":{"dependency":{"./footer.js":"./src/footer.js"},"code":"\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\n\nvar _footer = _interopRequireDefault(require(\"./footer.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\n// import './footer.js';\n// export function createHeading() {\n//   const element = document.createElement('h2');\n//   element.textContent = 'Hello webpack';\n//   element.addEventListener('click', () => alert('Hello webpack'));\n//   return element;\n// }\nconsole.log((0, _footer[\"default\"])());\n\nvar _default = function _default() {\n  var element = document.createElement('h2');\n  element.textContent = 'Hello webpack';\n  element.addEventListener('click', function () {\n    return alert('Hello webpack');\n  });\n  return element;\n};\n\nexports[\"default\"] = _default;"},"./src/footer.js":{"dependency":{"./heading.js":"./src/heading.js"},"code":"\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\n\nvar _heading = _interopRequireDefault(require(\"./heading.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nconsole.log('I am footer');\n\nvar _default = function _default() {\n  return 'I am footer';\n};\n\nexports[\"default\"] = _default;"},"./src/user.json":{"dependency":{},"code":"\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\nvar _default = \"export default \\\"{\\\\r\\\\n  \\\\\\\"name\\\\\\\": \\\\\\\"mmm\\\\\\\",\\\\r\\\\n  \\\\\\\"age\\\\\\\": 24\\\\r\\\\n}\\\\r\\\\n\\\"\";\nexports[\"default\"] = _default;"}})
